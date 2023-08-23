@@ -6,11 +6,12 @@ Welcome to the **Billing System** project! This system provides a comprehensive 
 
 The Billing System project offers the following features:
 
-1. **Add Bill:** Easily create and add new bills to the system. Specify relevant details such as customer information, items purchased, and due dates.
+1. **Add Bill:** Easily create and add new bills to the system. Specify name and description.
 
-2. **Retrieve Bill:** Retrieve bill details using various search parameters. This helps in quickly accessing specific bills and their information.
+2. **Retrieve Bill:**
+   Retrieve bills with a specific ID or obtain a comprehensive list of all bills. This functionality streamlines the process of swiftly accessing precise bill details, contributing to a more efficient and informed workflow.
 
-3. **Pay Bill:** Record payments and mark bills as paid. This feature allows you to keep track of bill payment statuses.
+3. **Pay Bill:** Efficiently log payments and document corresponding transactions. This essential feature empowers you to maintain a real-time overview of bill payment statuses, enhancing your ability to manage financial records seamlessly.
 
 4. **Retrieve Transaction:** Retrieve transaction records to keep a log of all the financial activities within the system.
 
@@ -18,16 +19,26 @@ The Billing System project offers the following features:
 
 Follow these steps to run the Billing System project locally:
 
-1. Ensure you have Java and Maven installed on your system.
+
+1. Ensure you have the following software installed on your system:
+   - Java 1.8
+   - Spring Boot 2.7.3
+   - Maven 3.6.2 (Optional: You can use the Maven Wrapper if Maven is not installed)
+   - MySQL 8.0
 2. Clone the project repository:
-3. Navigate to the project directory:
+   ```bash
+   git clone https://github.com/yourusername/billing-system.git
+3. Navigate to the project directory: 
+   ```bash
+   cd billing-system
 4. Open the `application.properties` file in the `src/main/resources` directory.
 5. Modify the database username and password to match your own database setup:
-```properties
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-```
-6. Run the project using maven: `mvnw spring-boot:run`
+   ```properties
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   ```
+6. Run the project using maven: `mvn spring-boot:run`\
+   Alternatively, you can use the Maven Wrapper: `mvnw spring-boot:run`
 
 ## Application Start and Endpoint Access
 
