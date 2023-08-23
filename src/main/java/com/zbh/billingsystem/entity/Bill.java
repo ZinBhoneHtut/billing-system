@@ -40,6 +40,11 @@ public class Bill implements Serializable, IAudit {
     @Embedded
     private Audit audit;
 
+    public Bill(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public boolean equals(Object o) {
         if (this == o) {
             return true;

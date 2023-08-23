@@ -47,4 +47,8 @@ public class BillService implements CrudService<Bill> {
     public long count() {
         return billRepository.count();
     }
+
+    public void saveAll(Iterable<Bill> bills) {
+        billRepository.saveAll(bills);
+    }
 }

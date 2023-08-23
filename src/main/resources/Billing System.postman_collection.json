@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "81bf4583-9db6-4ea7-afaf-f7c5ed62b709",
+		"name": "Billing System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7812344",
+		"_collection_link": "https://www.postman.com/zin-bhone-htut/workspace/billing-system/collection/7812344-81bf4583-9db6-4ea7-afaf-f7c5ed62b709?action=share&source=collection_link&creator=7812344"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Login\", function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"\r",
+							"    let token = pm.response.json().access_token;\r",
+							"    pm.collectionVariables.set(\"token\", token)\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Top up\",\r\n    \"description\": \"Bill payment for internet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Bills",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"list"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay Bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"api_caller\": \"Citizen Pay\",\r\n    \"id\": 1,\r\n    \"amount\": 50000,\r\n    \"reference_no\": \"20220929112850\",\r\n    \"phone_number\": \"959123456789\"\t\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/pay"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve transaction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/transaction?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"transaction"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ping the server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/public/ping"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "root",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "\"\"",
+			"type": "string"
+		}
+	]
+}
