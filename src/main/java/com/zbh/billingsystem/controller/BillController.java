@@ -26,7 +26,6 @@ public class BillController {
     private final BillService billService;
     private final BillMapper billMapper;
     private final BillResponseMapper billResponseMapper;
-    private static final String DATE_PATTERN = "yyyyMMddHHmmss";
 
     @PostMapping("/add")
     public ResponseEntity<BillResponseDTO> addBill(@Valid @RequestBody BillDTO billDTO) {
